@@ -1,0 +1,289 @@
+/**
+ * ========================================
+ * БЫСТРАЯ НАСТРОЙКА PHP ПРОЕКТА
+ * ========================================
+ * 
+ * Полная инструкция по настройке рабочей среды и запуску проекта
+ * с Bootstrap 5 и RedBeanPHP БЕЗ ИНТЕРНЕТА после установки.
+ */
+
+// ========================================
+// ЧАСТЬ 1: УСТАНОВКА (ДОМА, С ИНТЕРНЕТОМ)
+// ========================================
+
+// --- Windows ---
+// 1. Скачать PHP: https://windows.php.net/download/
+//    Распаковать в C:\php
+//    Добавить C:\php в PATH (Система → Дополнительные параметры → Переменные среды)
+//
+// 2. Скачать Composer: https://getcomposer.org/Composer-Setup.exe
+//    Установить (автоматически добавится в PATH)
+//
+// 3. Проверить установку:
+//    Открыть cmd и выполнить:
+//    php -v
+//    composer -v
+
+// --- macOS ---
+// 1. Установить Homebrew (если нет): https://brew.sh
+//    /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
+//
+// 2. Установить PHP и Composer:
+//    brew install php composer
+//
+// 3. Проверить:
+//    php -v && composer -v
+
+// --- Linux (Ubuntu/Debian) ---
+// sudo apt update
+// sudo apt install php php-cli php-mbstring php-xml php-curl composer
+// php -v && composer -v
+
+// ========================================
+// ЧАСТЬ 2: СОЗДАНИЕ ПРОЕКТА (ДОМА)
+// ========================================
+
+// Создать папку проекта и структуру:
+
+// Windows (PowerShell):
+/*
+New-Item -ItemType Directory -Path ${1:my-project}\public\admin -Force
+cd ${1:my-project}
+New-Item bootstrap.php,helpers.php,.gitignore
+New-Item public\index.php,public\login.php,public\register.php
+New-Item public\admin\dashboard.php,public\admin\layout.php
+*/
+
+// macOS / Linux:
+/*
+mkdir -p ${1:my-project}/{public/admin,vendor}
+cd ${1:my-project}
+touch bootstrap.php helpers.php .gitignore
+touch public/{index,login,register}.php
+touch public/admin/{dashboard,layout}.php
+*/
+
+// ========================================
+// ЧАСТЬ 3: УСТАНОВКА ЗАВИСИМОСТЕЙ (ДОМА)
+// ========================================
+
+// 1. Создать composer.json (или использовать сниппет php-composer-json):
+/*
+{
+  "require": {
+    "gabordemooij/redbean": "^5.7"
+  },
+  "autoload": {
+    "files": ["bootstrap.php", "helpers.php"]
+  }
+}
+*/
+
+// 2. Установить пакеты (ВАЖНО: сделать дома!):
+// composer install
+//
+// Это создаст папку vendor/ с RedBeanPHP.
+// БЕЗ ИНТЕРНЕТА composer install НЕ РАБОТАЕТ!
+
+// 3. Скопировать ВЕСЬ проект на флешку, включая папку vendor/
+
+// ========================================
+// ЧАСТЬ 4: НАСТРОЙКА ФАЙЛОВ (ДОМА ИЛИ НА ЭКЗАМЕНЕ)
+// ========================================
+
+// --- bootstrap.php (используй сниппет: php-app-bootstrap) ---
+// Основной файл инициализации приложения
+
+// --- helpers.php (используй сниппет: php-helpers-all) ---
+// Вспомогательные функции: e(), csrf_field(), flash(), redirect()
+
+// --- .gitignore (используй сниппет: php-gitignore) ---
+// Исключить vendor/, .env, *.db из git
+
+// ========================================
+// ЧАСТЬ 5: БАЗА ДАННЫХ (НА ЭКЗАМЕНЕ)
+// ========================================
+
+// ВАРИАНТ 1: SQLite (ПРОЩЕ ВСЕГО, БЕЗ УСТАНОВКИ)
+// В bootstrap.php используй:
+// R::setup('sqlite:' . __DIR__ . '/database.db');
+//
+// База создастся автоматически при первом запуске!
+// Файл database.db появится в корне проекта.
+
+// ВАРИАНТ 2: MySQL (если уже установлен)
+/*
+mysql -u root -p
+CREATE DATABASE ${2:my_db} CHARACTER SET utf8mb4;
+EXIT;
+*/
+// В bootstrap.php:
+// R::setup('mysql:host=127.0.0.1;dbname=${2:my_db}', 'root', 'password');
+
+// ========================================
+// ЧАСТЬ 6: ЗАПУСК СЕРВЕРА
+// ========================================
+
+// Встроенный PHP сервер (БЕЗ Apache/Nginx):
+
+// Windows:
+// cd public
+// php -S localhost:8000
+
+// macOS / Linux:
+// cd public && php -S localhost:8000
+
+// Открыть браузер: http://localhost:8000
+
+// ========================================
+// ЧАСТЬ 7: СОЗДАНИЕ СТРАНИЦ (СНИППЕТЫ)
+// ========================================
+
+// В VS Code открой файл и используй сниппеты:
+
+// bootstrap.php          → php-app-bootstrap
+// helpers.php            → php-helpers-all
+// public/login.php       → php-auth-login
+// public/register.php    → php-auth-register
+// public/admin/layout.php     → php-admin-layout
+// public/admin/dashboard.php  → php-admin-dashboard
+
+// Все сниппеты начинаются с 'php-'
+// Набери 'php-' и нажми Ctrl+Space для списка
+
+// ========================================
+// ЧАСТЬ 8: СТРУКТУРА ПРОЕКТА
+// ========================================
+
+/*
+${1:my-project}/
+├── public/              ← Веб-корень (сюда заходит браузер)
+│   ├── index.php        ← Главная страница
+│   ├── login.php        ← Вход
+│   ├── register.php     ← Регистрация
+│   └── admin/           ← Админ-панель
+│       ├── dashboard.php
+│       ├── layout.php
+│       └── users.php
+├── vendor/              ← Библиотеки (RedBeanPHP)
+├── bootstrap.php        ← Инициализация (БД, сессии, хелперы)
+├── helpers.php          ← Функции: e(), csrf_field(), flash()
+├── database.db          ← SQLite база (создастся автоматически)
+├── composer.json        ← Зависимости проекта
+└── .gitignore
+*/
+
+// ========================================
+// ЧАСТЬ 9: ПОЛЕЗНЫЕ СНИППЕТЫ
+// ========================================
+
+// АУТЕНТИФИКАЦИЯ:
+// php-auth-login          - Страница входа с проверкой
+// php-auth-register       - Регистрация с хешированием пароля
+// php-auth-logout         - Выход (уничтожение сессии)
+// php-auth-forgot         - Восстановление пароля
+// php-auth-middleware     - Защита страниц (require_auth())
+
+// АДМИН-ПАНЕЛЬ:
+// php-admin-layout        - Шаблон админки (сайдбар + топбар)
+// php-admin-dashboard     - Дашборд со статистикой
+// php-admin-users-list    - Список пользователей с поиском
+// php-admin-user-edit     - Форма создания/редактирования
+// php-admin-crud-list     - Универсальный CRUD список
+
+// БАЗА ДАННЫХ (RedBeanPHP):
+// php-redbean-setup       - Подключение к БД
+// php-redbean-crud-create - Создать запись
+// php-redbean-crud-read   - Прочитать записи
+// php-redbean-crud-update - Обновить запись
+// php-redbean-crud-delete - Удалить запись
+// php-redbean-search      - Поиск по LIKE
+// php-redbean-pagination  - Пагинация результатов
+
+// КОМПОНЕНТЫ:
+// php-components-flash         - Флеш-сообщения (успех/ошибка)
+// php-components-pagination    - Bootstrap пагинация
+// php-components-form-handler  - Обработка форм
+
+// ХЕЛПЕРЫ:
+// php-helpers-all       - Все функции (e, csrf, flash, redirect)
+// php-helpers-sanitize  - Очистка ввода
+// php-helpers-upload    - Загрузка файлов
+
+// ========================================
+// ЧАСТЬ 10: БЫСТРЫЙ СТАРТ (ШПАРГАЛКА)
+// ========================================
+
+/*
+1. ДОМА (с интернетом):
+   - Установить PHP + Composer
+   - Создать проект
+   - composer install
+   - Скопировать на флешку
+
+2. НА РАБОТЕ (без интернета):
+   - Скопировать проект с флешки
+   - Открыть в VS Code
+   - Создать файлы через сниппеты:
+     * bootstrap.php → php-app-bootstrap
+     * helpers.php → php-helpers-all
+     * public/login.php → php-auth-login
+   - Запустить: cd public && php -S localhost:8000
+   - Открыть: http://localhost:8000/login.php
+
+3. БАЗА ДАННЫХ:
+   - SQLite: автоматически создастся
+   - MySQL: создать вручную через mysql
+
+4. СНИППЕТЫ:
+   - Набрать 'php-' и Ctrl+Space
+   - Набрать 'bs5-' для Bootstrap компонентов
+*/
+
+// ========================================
+// ЧАСТЬ 11: ЧАСТЫЕ ОШИБКИ
+// ========================================
+
+// ОШИБКА: "Class 'RedBeanPHP\R' not found"
+// РЕШЕНИЕ: Проверь что папка vendor/ скопирована
+//          Проверь require_once в bootstrap.php
+
+// ОШИБКА: "Failed to open stream: No such file or directory"
+// РЕШЕНИЕ: Проверь пути в require_once (должны быть относительные)
+
+// ОШИБКА: "Headers already sent"
+// РЕШЕНИЕ: Убери пробелы/переносы ДО <?php в файлах
+
+// ОШИБКА: "CSRF token mismatch"
+// РЕШЕНИЕ: Проверь что session_start() вызван в bootstrap.php
+//          Добавь <?= csrf_field() ?> в формы
+
+// ОШИБКА: Сервер не запускается
+// РЕШЕНИЕ: Проверь что порт 8000 свободен
+//          Попробуй другой порт: php -S localhost:8080
+
+// ========================================
+// ЧАСТЬ 12: БЕЗОПАСНОСТЬ
+// ========================================
+
+// ✓ Всегда используй e() для вывода данных: <?= e($user->name) ?>
+// ✓ Добавляй csrf_field() во все формы
+// ✓ Проверяй csrf_check() при обработке POST
+// ✓ Используй password_hash() для паролей
+// ✓ Проверяй password_verify() при входе
+// ✓ RedBeanPHP автоматически защищает от SQL-инъекций
+
+// ========================================
+// ЧАСТЬ 13: ССЫЛКИ (сохрани оффлайн)
+// ========================================
+
+// Bootstrap 5 Docs:    https://getbootstrap.com/docs/5.3/
+// RedBeanPHP Docs:     https://redbeanphp.com/
+// PHP Manual:          https://www.php.net/manual/ru/
+// Easy Snippets:       https://github.com/s-andrianov/easy-snippets
+
+// ========================================
+// ГОТОВО! УДАЧИ В РАЗРАБОТКЕ! 🚀
+// ========================================
+
+$0

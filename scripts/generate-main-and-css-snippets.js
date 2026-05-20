@@ -82,7 +82,7 @@ function makePhpPrefix(relativePath) {
 	return `php-${parts.slice(1).join("-")}`;
 }
 
-function createSnippetMap(files, prefixBuilder) {
+function createSnippetMap(files, prefixBuilder, scope = "") {
 	const snippets = {};
 
 	for (const file of files.sort()) {
@@ -92,7 +92,7 @@ function createSnippetMap(files, prefixBuilder) {
 
 		snippets[prefix] = {
 			description: toTitleCaseFromSlug(prefix),
-			scope: "",
+			scope,
 			prefix,
 			body: toSnippetBody(body),
 		};
@@ -128,9 +128,9 @@ function generate() {
 		return rel.startsWith("php/");
 	});
 
-	const mainSnippets = createSnippetMap(mainFiles, makeMainPrefix);
-	const cssSnippets = createSnippetMap(cssFiles, makeCssPrefix);
-	const phpSnippets = createSnippetMap(phpFiles, makePhpPrefix);
+	const mainSnippets = createSnippetMap(mainFiles, makeMainPrefix, "");
+	const cssSnippets = createSnippetMap(cssFiles, makeCssPrefix, "");
+	const phpSnippets = createSnippetMap(phpFiles, makePhpPrefix, "php");
 
 	writeSnippetFile(mainOutputFile, mainSnippets);
 	writeSnippetFile(cssOutputFile, cssSnippets);
