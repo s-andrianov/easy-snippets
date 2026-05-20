@@ -1,0 +1,121 @@
+<!doctype html>
+<html lang="en" data-bs-theme="light">
+	<head>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1" />
+		<title>${1:Dashboard} &mdash; ${2:Admin}</title>
+		<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet" />
+		<link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css" rel="stylesheet" />
+	</head>
+	<body>
+		<div class="d-flex" style="min-height: 100vh;">
+			<aside class="offcanvas-md offcanvas-start bg-dark text-white" tabindex="-1" id="adminSidebar" style="width: 260px;">
+				<div class="offcanvas-header border-bottom border-secondary">
+					<h5 class="offcanvas-title fw-bold">${2:Admin}</h5>
+					<button type="button" class="btn-close btn-close-white" data-bs-dismiss="offcanvas" data-bs-target="#adminSidebar"></button>
+				</div>
+				<div class="offcanvas-body p-0 d-flex flex-column">
+					<a href="${3:#}" class="d-none d-md-flex align-items-center p-3 text-white text-decoration-none border-bottom border-secondary">
+						<i class="bi bi-stack fs-4 me-2"></i><span class="fs-5 fw-bold">${2:Admin}</span>
+					</a>
+					<ul class="nav nav-pills flex-column mb-auto p-2">
+						<li><a href="${4:#}" class="nav-link active"><i class="bi bi-speedometer2 me-2"></i>${5:Dashboard}</a></li>
+						<li><a href="${6:#}" class="nav-link text-white"><i class="bi bi-bag me-2"></i>${7:Orders}<span class="badge text-bg-primary ms-auto">12</span></a></li>
+						<li><a href="${8:#}" class="nav-link text-white"><i class="bi bi-people me-2"></i>${9:Customers}</a></li>
+						<li><a href="${10:#}" class="nav-link text-white"><i class="bi bi-box-seam me-2"></i>${11:Products}</a></li>
+						<li><a href="${12:#}" class="nav-link text-white"><i class="bi bi-graph-up me-2"></i>${13:Analytics}</a></li>
+						<li class="my-2"><hr class="bg-secondary" /></li>
+						<li><a href="${14:#}" class="nav-link text-white"><i class="bi bi-gear me-2"></i>${15:Settings}</a></li>
+					</ul>
+				</div>
+			</aside>
+			<div class="flex-grow-1 d-flex flex-column" style="min-width: 0;">
+				<nav class="navbar navbar-expand-md bg-body sticky-top border-bottom shadow-sm">
+					<div class="container-fluid">
+						<button class="btn btn-outline-secondary d-md-none me-2" type="button" data-bs-toggle="offcanvas" data-bs-target="#adminSidebar"><i class="bi bi-list"></i></button>
+						<form class="d-none d-md-flex flex-grow-1 me-3" role="search" style="max-width: 420px;">
+							<div class="input-group">
+								<span class="input-group-text bg-body-tertiary border-end-0"><i class="bi bi-search"></i></span>
+								<input class="form-control border-start-0" type="search" placeholder="${16:Search...}" />
+							</div>
+						</form>
+						<ul class="navbar-nav ms-auto align-items-center">
+							<li class="nav-item"><a href="#" class="nav-link"><i class="bi bi-bell fs-5"></i></a></li>
+							<li class="nav-item dropdown">
+								<a href="#" class="nav-link d-flex align-items-center" data-bs-toggle="dropdown">
+									<img src="${17:https://via.placeholder.com/36}" width="36" height="36" alt="" class="rounded-circle me-2" />
+									<span class="d-none d-lg-inline">${18:User Name}</span>
+								</a>
+								<ul class="dropdown-menu dropdown-menu-end shadow">
+									<li><a class="dropdown-item" href="${19:#}">${20:Profile}</a></li>
+									<li><a class="dropdown-item" href="${21:#}">${22:Settings}</a></li>
+									<li><hr class="dropdown-divider" /></li>
+									<li><a class="dropdown-item" href="${23:#}">${24:Sign out}</a></li>
+								</ul>
+							</li>
+						</ul>
+					</div>
+				</nav>
+				<main class="flex-grow-1 p-3 p-md-4 bg-body-tertiary">
+					<div class="d-flex flex-column flex-md-row justify-content-between align-items-md-center mb-4 gap-2">
+						<div>
+							<h1 class="h3 fw-bold mb-1">${25:Dashboard}</h1>
+							<p class="text-body-secondary mb-0 small">${26:Welcome back, here's what's happening today.}</p>
+						</div>
+						<button class="btn btn-primary"><i class="bi bi-plus-lg me-1"></i>${27:Create new}</button>
+					</div>
+					<div class="row g-3 mb-4">
+						<div class="col-12 col-sm-6 col-xl-3">
+							<div class="card border-0 shadow-sm h-100"><div class="card-body">
+								<div class="text-body-secondary small text-uppercase fw-semibold mb-2">${28:Revenue}</div>
+								<div class="h3 fw-bold mb-1">$${29:48,295}</div>
+								<small class="text-success"><i class="bi bi-arrow-up"></i> 12.5%</small>
+							</div></div>
+						</div>
+						<div class="col-12 col-sm-6 col-xl-3">
+							<div class="card border-0 shadow-sm h-100"><div class="card-body">
+								<div class="text-body-secondary small text-uppercase fw-semibold mb-2">${30:Orders}</div>
+								<div class="h3 fw-bold mb-1">${31:1,284}</div>
+								<small class="text-success"><i class="bi bi-arrow-up"></i> 8.2%</small>
+							</div></div>
+						</div>
+						<div class="col-12 col-sm-6 col-xl-3">
+							<div class="card border-0 shadow-sm h-100"><div class="card-body">
+								<div class="text-body-secondary small text-uppercase fw-semibold mb-2">${32:Customers}</div>
+								<div class="h3 fw-bold mb-1">${33:8,432}</div>
+								<small class="text-danger"><i class="bi bi-arrow-down"></i> 2.1%</small>
+							</div></div>
+						</div>
+						<div class="col-12 col-sm-6 col-xl-3">
+							<div class="card border-0 shadow-sm h-100"><div class="card-body">
+								<div class="text-body-secondary small text-uppercase fw-semibold mb-2">${34:Conversion}</div>
+								<div class="h3 fw-bold mb-1">${35:3.42%}</div>
+								<small class="text-success"><i class="bi bi-arrow-up"></i> 0.8%</small>
+							</div></div>
+						</div>
+					</div>
+					<div class="row g-3">
+						<div class="col-12 col-xl-8">
+							<div class="card border-0 shadow-sm h-100">
+								<div class="card-header bg-body"><h5 class="mb-0 fw-bold">${36:Sales overview}</h5></div>
+								<div class="card-body"><canvas id="salesChart" height="280"></canvas></div>
+							</div>
+						</div>
+						<div class="col-12 col-xl-4">
+							<div class="card border-0 shadow-sm h-100">
+								<div class="card-header bg-body"><h5 class="mb-0 fw-bold">${37:Recent activity}</h5></div>
+								<ul class="list-group list-group-flush">
+									<li class="list-group-item small">${38:Order #1042 was paid}</li>
+									<li class="list-group-item small">${39:New customer registered}</li>
+									<li class="list-group-item small">${40:Stock low: 3 items}</li>
+								</ul>
+							</div>
+						</div>
+					</div>
+					$41
+				</main>
+			</div>
+		</div>
+		<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"></script>
+	</body>
+</html>

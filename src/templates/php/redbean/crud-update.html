@@ -1,0 +1,12 @@
+<?php
+\$${1:item} = R::load('${2:item}', (int) \$id);
+if (!\$${1:item}->id) {
+	http_response_code(404);
+	exit('Not found');
+}
+
+\$${1:item}->${3:title} = \$_POST['${3:title}'] ?? \$${1:item}->${3:title};
+\$${1:item}->updated_at = date('Y-m-d H:i:s');
+
+R::store(\$${1:item});
+$0

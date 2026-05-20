@@ -1,0 +1,14 @@
+<?php
+\$q = trim((string) (\$_GET['q'] ?? ''));
+\$like = '%' . \$q . '%';
+
+if (\$q !== '') {
+	\$${1:items} = R::find(
+		'${2:item}',
+		'${3:title} LIKE ? OR ${4:description} LIKE ? ORDER BY id DESC LIMIT 50',
+		[\$like, \$like]
+	);
+} else {
+	\$${1:items} = R::findAll('${2:item}', 'ORDER BY id DESC LIMIT 50');
+}
+$0

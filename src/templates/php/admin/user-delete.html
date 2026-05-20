@@ -1,0 +1,24 @@
+<?php
+declare(strict_types=1);
+
+require_once __DIR__ . '/../bootstrap.php';
+require_admin();
+
+use RedBeanPHP\\R;
+
+if (\$_SERVER['REQUEST_METHOD'] !== 'POST' || !csrf_check()) {
+	flash('danger', 'Invalid request.');
+	redirect('/admin/users.php');
+}
+
+\$id = (int) (\$_POST['id'] ?? 0);
+\$user = R::load('user', \$id);
+
+if (!\$user->id) {
+	flash('warning', 'User not found.');
+	redirect('/admin/users.php');
+}
+
+R::trash(\$user);
+flash('success', 'User deleted.');
+redirect('/admin/users.php');

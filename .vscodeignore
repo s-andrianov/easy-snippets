@@ -16,3 +16,16 @@ vsc-extension-quickstart.md
 test
 screenshots
 src/templates
+scripts/**
+
+# исходники иконок и старая иконка
+bootstrap5.png
+pixel_art_large.png
+pixel_art_small.png
+
+# package manager artifacts / dev files
+bun.lock
+.claude/**
+.prettierrc
+CONTRIBUTION.md
+HOW-TO-INSTALL.md

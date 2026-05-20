@@ -1,0 +1,12 @@
+<?php
+try {
+	R::begin();
+	$1
+	R::commit();
+} catch (\\Throwable \$e) {
+	R::rollback();
+	error_log(\$e->getMessage());
+	flash('danger', 'Operation failed: ' . \$e->getMessage());
+	redirect('${2:/}');
+}
+$0

@@ -1,21 +1,21 @@
 {
-	"name": "bootstrap5-vscode",
-	"displayName": "Bootstrap 5 Quick Snippets",
-	"description": "Collection of Bootstrap 5 Snippets that will make your life easier.",
-	"icon": "bootstrap5.png",
-	"version": "0.5.0",
-	"publisher": "AnbuselvanRocky",
+	"name": "easy-snippets",
+	"displayName": "Easy Snippets",
+	"description": "Easy Snippets — Bootstrap 5 snippets + ready-made pages (login, register, dashboard, pricing, e-commerce) + PHP/RedBeanPHP backend snippets.",
+	"icon": "icon.png",
+	"version": "0.1.0",
+	"publisher": "sanaxis",
 	"author": {
-		"name": "Anbuselvan Rocky"
+		"name": "sanaxis"
 	},
 	"license": "MIT",
-	"homepage": "https://github.com/anburocky3/bootstrap5-snippets/blob/master/README.md",
+	"homepage": "https://github.com/s-andrianov/easy-snippets#readme",
 	"repository": {
 		"type": "git",
-		"url": "https://github.com/anburocky3/bootstrap5-snippets.git"
+		"url": "https://github.com/s-andrianov/easy-snippets.git"
 	},
 	"bugs": {
-		"url": "https://github.com/anburocky3/bootstrap5-snippets/issues"
+		"url": "https://github.com/s-andrianov/easy-snippets/issues"
 	},
 	"galleryBanner": {
 		"color": "#E6E0EA",
@@ -25,6 +25,10 @@
 		"vscode": "^1.74.0"
 	},
 	"keywords": [
+		"php",
+		"php snippets",
+		"redbeanphp",
+		"redbeanphp snippets",
 		"bootstrap",
 		"bootstrap 5",
 		"bootstrap 5 snippets",
@@ -63,6 +67,10 @@
 			{
 				"language": "php",
 				"path": "./snippets/snippets.code-snippets"
+			},
+			{
+				"language": "php",
+				"path": "./snippets/php.code-snippets"
 			},
 			{
 				"language": "plaintext",
@@ -149,13 +157,7 @@
 				"path": "./snippets/snippets.code-snippets"
 			}
 		],
-		"commands": [
-			{
-				"command": "bootstrap5-vscode.openCyberDudeChannel",
-				"title": "Open CyberDude YT Channel",
-				"category": "CyberDude"
-			}
-		]
+		"commands": []
 	},
 	"scripts": {
 		"vscode:prepublish": "bun run compile",

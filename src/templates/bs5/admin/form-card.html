@@ -1,0 +1,53 @@
+<div class="card border-0 shadow-sm">
+	<div class="card-header bg-body">
+		<h5 class="mb-0 fw-bold">${1:Form title}</h5>
+		<small class="text-body-secondary">${2:Section description}</small>
+	</div>
+	<div class="card-body p-4">
+		<form class="row g-3">
+			<div class="col-md-6">
+				<label for="fcName" class="form-label">${3:Name}</label>
+				<input id="fcName" type="text" class="form-control" required />
+			</div>
+			<div class="col-md-6">
+				<label for="fcSlug" class="form-label">${4:Slug}</label>
+				<div class="input-group">
+					<span class="input-group-text">/</span>
+					<input id="fcSlug" type="text" class="form-control" />
+				</div>
+			</div>
+			<div class="col-12">
+				<label for="fcDesc" class="form-label">${5:Description}</label>
+				<textarea id="fcDesc" rows="4" class="form-control"></textarea>
+			</div>
+			<div class="col-md-4">
+				<label for="fcCategory" class="form-label">${6:Category}</label>
+				<select id="fcCategory" class="form-select">
+					<option>${7:Select...}</option>
+					<option>${8:Category A}</option>
+					<option>${9:Category B}</option>
+				</select>
+			</div>
+			<div class="col-md-4">
+				<label for="fcStatus" class="form-label">${10:Status}</label>
+				<select id="fcStatus" class="form-select">
+					<option value="draft">${11:Draft}</option>
+					<option value="published">${12:Published}</option>
+					<option value="archived">${13:Archived}</option>
+				</select>
+			</div>
+			<div class="col-md-4">
+				<label for="fcDate" class="form-label">${14:Publish date}</label>
+				<input id="fcDate" type="date" class="form-control" />
+			</div>
+			<div class="col-12 form-check ms-2">
+				<input id="fcFeatured" type="checkbox" class="form-check-input" />
+				<label for="fcFeatured" class="form-check-label">${15:Featured}</label>
+			</div>
+			<div class="col-12 d-flex justify-content-end gap-2">
+				<button type="button" class="btn btn-outline-secondary">${16:Cancel}</button>
+				<button type="submit" class="btn btn-primary">${17:Save}</button>
+			</div>
+		</form>
+	</div>
+</div>

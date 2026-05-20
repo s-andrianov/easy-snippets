@@ -7,6 +7,7 @@ const snippetFiles = [
 	path.join(rootDir, "snippets", "snippets.code-snippets"),
 	path.join(rootDir, "snippets", "css.code-snippets"),
 	path.join(rootDir, "snippets", "icons.code-snippets"),
+	path.join(rootDir, "snippets", "php.code-snippets"),
 ];
 
 const tableStartMarker = "<!-- AUTO-GENERATED-SNIPPETS-TABLE:START -->";

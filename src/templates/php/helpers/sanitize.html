@@ -1,0 +1,8 @@
+<?php
+// Sanitize POST input safely
+\$${1:title}   = trim((string) (\$_POST['${1:title}'] ?? ''));
+\$${2:email}   = filter_var(trim((string) (\$_POST['${2:email}'] ?? '')), FILTER_VALIDATE_EMAIL);
+\$${3:int_id}  = (int) (\$_POST['${3:int_id}'] ?? 0);
+\$${4:slug}    = preg_replace('/[^a-z0-9-]+/i', '-', strtolower((string) (\$_POST['${4:slug}'] ?? '')));
+\$${5:html}    = strip_tags((string) (\$_POST['${5:html}'] ?? ''), '<p><br><strong><em><a>');
+$0

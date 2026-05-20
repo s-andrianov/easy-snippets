@@ -1,0 +1,79 @@
+<?php
+declare(strict_types=1);
+
+require_once __DIR__ . '/bootstrap.php';
+
+use RedBeanPHP\\R;
+
+\$token = (string) (\$_GET['token'] ?? \$_POST['token'] ?? '');
+\$user  = \$token ? R::findOne('user', 'reset_token = ?', [\$token]) : null;
+
+if (!\$user) {
+	http_response_code(400);
+	exit('Invalid or expired token.');
+}
+
+\$errors = [];
+
+if (\$_SERVER['REQUEST_METHOD'] === 'POST') {
+	if (!csrf_check()) {
+		\$errors[] = 'Invalid form submission.';
+	} else {
+		\$password = (string) (\$_POST['password'] ?? '');
+		\$confirm  = (string) (\$_POST['password_confirmation'] ?? '');
+
+		if (strlen(\$password) < 8) \$errors[] = 'Password must be at least 8 characters.';
+		if (\$password !== \$confirm) \$errors[] = 'Passwords do not match.';
+
+		if (!\$errors) {
+			\$user->password_hash = password_hash(\$password, PASSWORD_DEFAULT);
+			\$user->reset_token   = null;
+			\$user->reset_sent_at = null;
+			R::store(\$user);
+
+			flash('success', 'Password updated. Please sign in.');
+			redirect('${1:/login.php}');
+		}
+	}
+}
+?>
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="utf-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1" />
+	<title>Reset password</title>
+	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet" />
+</head>
+<body class="bg-body-tertiary">
+	<section class="vh-100 d-flex align-items-center">
+		<div class="container">
+			<div class="row justify-content-center">
+				<div class="col-12 col-md-6 col-lg-4">
+					<div class="card border-0 shadow-sm"><div class="card-body p-4 p-md-5">
+						<h1 class="h4 fw-bold text-center mb-3">Set a new password</h1>
+
+						<?php if (\$errors): ?>
+							<div class="alert alert-danger"><ul class="mb-0 ps-3"><?php foreach (\$errors as \$err): ?><li><?= e(\$err) ?></li><?php endforeach; ?></ul></div>
+						<?php endif; ?>
+
+						<form method="post">
+							<?= csrf_field() ?>
+							<input type="hidden" name="token" value="<?= e(\$token) ?>" />
+							<div class="form-floating mb-3">
+								<input type="password" class="form-control" name="password" id="rp_pass" placeholder="New password" minlength="8" required />
+								<label for="rp_pass">New password</label>
+							</div>
+							<div class="form-floating mb-3">
+								<input type="password" class="form-control" name="password_confirmation" id="rp_conf" placeholder="Confirm" required />
+								<label for="rp_conf">Confirm password</label>
+							</div>
+							<button class="btn btn-primary w-100 py-2">Update password</button>
+						</form>
+					</div></div>
+				</div>
+			</div>
+		</div>
+	</section>
+</body>
+</html>

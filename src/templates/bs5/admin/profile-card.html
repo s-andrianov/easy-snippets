@@ -1,0 +1,50 @@
+<div class="card border-0 shadow-sm">
+	<div class="card-body p-4 p-md-5">
+		<div class="row g-4">
+			<div class="col-md-4 text-center">
+				<img src="${1:https://via.placeholder.com/160}" alt="${2:Avatar}" class="rounded-circle img-fluid mb-3" style="max-width: 160px;" />
+				<div>
+					<button class="btn btn-sm btn-outline-secondary"><i class="bi bi-camera me-1"></i>${3:Change photo}</button>
+				</div>
+			</div>
+			<div class="col-md-8">
+				<form>
+					<div class="row g-3">
+						<div class="col-sm-6">
+							<label class="form-label">${4:First name}</label>
+							<input type="text" class="form-control" value="${5:Jane}" />
+						</div>
+						<div class="col-sm-6">
+							<label class="form-label">${6:Last name}</label>
+							<input type="text" class="form-control" value="${7:Cooper}" />
+						</div>
+						<div class="col-12">
+							<label class="form-label">${8:Email}</label>
+							<input type="email" class="form-control" value="${9:jane@example.com}" />
+						</div>
+						<div class="col-sm-6">
+							<label class="form-label">${10:Phone}</label>
+							<input type="tel" class="form-control" />
+						</div>
+						<div class="col-sm-6">
+							<label class="form-label">${11:Role}</label>
+							<select class="form-select">
+								<option>${12:Admin}</option>
+								<option>${13:Editor}</option>
+								<option>${14:Viewer}</option>
+							</select>
+						</div>
+						<div class="col-12">
+							<label class="form-label">${15:Bio}</label>
+							<textarea class="form-control" rows="3"></textarea>
+						</div>
+						<div class="col-12 d-flex justify-content-end gap-2">
+							<button type="button" class="btn btn-outline-secondary">${16:Cancel}</button>
+							<button type="submit" class="btn btn-primary">${17:Save changes}</button>
+						</div>
+					</div>
+				</form>
+			</div>
+		</div>
+	</div>
+</div>

@@ -1,0 +1,101 @@
+<?php
+declare(strict_types=1);
+
+require_once __DIR__ . '/../bootstrap.php';
+require_admin();
+
+use RedBeanPHP\\R;
+
+\$id = (int) (\$_GET['id'] ?? 0);
+\$user = \$id ? R::load('user', \$id) : R::dispense('user');
+
+if (\$id && !\$user->id) {
+	http_response_code(404);
+	exit('User not found');
+}
+
+\$errors = [];
+
+if (\$_SERVER['REQUEST_METHOD'] === 'POST') {
+	if (!csrf_check()) {
+		\$errors[] = 'Invalid form submission.';
+	} else {
+		\$name  = trim((string) (\$_POST['name'] ?? ''));
+		\$email = trim((string) (\$_POST['email'] ?? ''));
+		\$role  = \$_POST['role'] ?? 'user';
+		\$password = (string) (\$_POST['password'] ?? '');
+
+		if (\$name === '')                            \$errors[] = 'Name is required.';
+		if (!filter_var(\$email, FILTER_VALIDATE_EMAIL)) \$errors[] = 'Invalid email.';
+
+		\$existing = R::findOne('user', 'email = ? AND id <> ?', [\$email, (int) \$user->id]);
+		if (\$existing) \$errors[] = 'Email already in use.';
+
+		if (!\$errors) {
+			\$user->name  = \$name;
+			\$user->email = \$email;
+			\$user->role  = in_array(\$role, ['user', 'editor', 'admin'], true) ? \$role : 'user';
+
+			if (\$password !== '') {
+				if (strlen(\$password) < 8) {
+					\$errors[] = 'Password must be at least 8 characters.';
+				} else {
+					\$user->password_hash = password_hash(\$password, PASSWORD_DEFAULT);
+				}
+			}
+
+			if (!\$errors) {
+				if (!\$user->id) {
+					\$user->created_at = date('Y-m-d H:i:s');
+				}
+				\$user->updated_at = date('Y-m-d H:i:s');
+				R::store(\$user);
+				flash('success', 'User saved.');
+				redirect('/admin/users.php');
+			}
+		}
+	}
+}
+
+\$page_title = \$user->id ? 'Edit user' : 'New user';
+\$active     = 'users';
+
+ob_start();
+?>
+<div class="card border-0 shadow-sm">
+	<div class="card-body p-4">
+		<?php if (\$errors): ?>
+			<div class="alert alert-danger"><ul class="mb-0 ps-3"><?php foreach (\$errors as \$err): ?><li><?= e(\$err) ?></li><?php endforeach; ?></ul></div>
+		<?php endif; ?>
+		<form method="post" class="row g-3">
+			<?= csrf_field() ?>
+			<div class="col-md-6">
+				<label class="form-label">Name</label>
+				<input type="text" name="name" class="form-control" value="<?= e(\$user->name) ?>" required />
+			</div>
+			<div class="col-md-6">
+				<label class="form-label">Email</label>
+				<input type="email" name="email" class="form-control" value="<?= e(\$user->email) ?>" required />
+			</div>
+			<div class="col-md-6">
+				<label class="form-label">Role</label>
+				<select name="role" class="form-select">
+					<option value="user"   <?= (\$user->role ?? 'user') === 'user'   ? 'selected' : '' ?>>User</option>
+					<option value="editor" <?= (\$user->role ?? '')     === 'editor' ? 'selected' : '' ?>>Editor</option>
+					<option value="admin"  <?= (\$user->role ?? '')     === 'admin'  ? 'selected' : '' ?>>Admin</option>
+				</select>
+			</div>
+			<div class="col-md-6">
+				<label class="form-label">Password <?= \$user->id ? '<small class="text-body-secondary">(leave blank to keep)</small>' : '' ?></label>
+				<input type="password" name="password" class="form-control" minlength="8" <?= \$user->id ? '' : 'required' ?> />
+			</div>
+			<div class="col-12 d-flex justify-content-end gap-2">
+				<a href="/admin/users.php" class="btn btn-outline-secondary">Cancel</a>
+				<button type="submit" class="btn btn-primary">Save user</button>
+			</div>
+		</form>
+	</div>
+</div>
+<?php
+\$content = ob_get_clean();
+include __DIR__ . '/layout.php';

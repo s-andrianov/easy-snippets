@@ -1,0 +1,10 @@
+<?php
+declare(strict_types=1);
+
+// Drop this at the top of any protected page.
+require_once __DIR__ . '/bootstrap.php';
+
+\$user = require_auth('${1:/login.php}');
+// For admin-only pages:
+// \$user = require_admin();
+$0

@@ -1,0 +1,8 @@
+<?php
+\$${1:bean} = R::dispense('${2:item}');
+\$${1:bean}->${3:title} = \$_POST['${3:title}'] ?? '';
+\$${1:bean}->${4:content} = \$_POST['${4:content}'] ?? '';
+\$${1:bean}->created_at = date('Y-m-d H:i:s');
+
+\$id = R::store(\$${1:bean});
+$0

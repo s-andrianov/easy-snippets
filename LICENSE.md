@@ -1,6 +1,7 @@
 MIT License
 
-Copyright (c) [2021] [Anbuselvan Annamalai]
+Copyright (c) 2021 Anbuselvan Annamalai (original)
+Copyright (c) 2025 sanaxis (fork)
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal

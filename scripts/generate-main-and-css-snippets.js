@@ -5,6 +5,7 @@ const rootDir = path.resolve(__dirname, "..");
 const templatesDir = path.join(rootDir, "src", "templates");
 const mainOutputFile = path.join(rootDir, "snippets", "snippets.code-snippets");
 const cssOutputFile = path.join(rootDir, "snippets", "css.code-snippets");
+const phpOutputFile = path.join(rootDir, "snippets", "php.code-snippets");
 
 function walkFiles(dir) {
 	const entries = fs.readdirSync(dir, { withFileTypes: true });
@@ -47,6 +48,7 @@ function makeMainPrefix(relativePath) {
 
 	if (top === "bs5") {
 		let rest = parts.slice(1);
+		// Drop the "components"/"content"/"layout" intermediate folder from prefix
 		if (
 			rest.length > 1 &&
 			(rest[0] === "components" ||
@@ -70,6 +72,14 @@ function makeCssPrefix(relativePath) {
 	const withoutExt = rel.replace(/\.html$/, "");
 	const parts = withoutExt.split("/");
 	return `css-${parts.slice(1).join("-")}`;
+}
+
+function makePhpPrefix(relativePath) {
+	const rel = relativePath.replace(/\\/g, "/");
+	const withoutExt = rel.replace(/\.html$/, "");
+	const parts = withoutExt.split("/");
+	// php/<subfolder>/<name> -> php-<subfolder>-<name>
+	return `php-${parts.slice(1).join("-")}`;
 }
 
 function createSnippetMap(files, prefixBuilder) {
@@ -107,24 +117,33 @@ function generate() {
 	const allFiles = walkFiles(templatesDir);
 	const mainFiles = allFiles.filter((file) => {
 		const rel = path.relative(templatesDir, file).replace(/\\/g, "/");
-		return !rel.startsWith("css/") && !rel.startsWith("icons/");
+		return !rel.startsWith("css/") && !rel.startsWith("icons/") && !rel.startsWith("php/");
 	});
 	const cssFiles = allFiles.filter((file) => {
 		const rel = path.relative(templatesDir, file).replace(/\\/g, "/");
 		return rel.startsWith("css/");
 	});
+	const phpFiles = allFiles.filter((file) => {
+		const rel = path.relative(templatesDir, file).replace(/\\/g, "/");
+		return rel.startsWith("php/");
+	});
 
 	const mainSnippets = createSnippetMap(mainFiles, makeMainPrefix);
 	const cssSnippets = createSnippetMap(cssFiles, makeCssPrefix);
+	const phpSnippets = createSnippetMap(phpFiles, makePhpPrefix);
 
 	writeSnippetFile(mainOutputFile, mainSnippets);
 	writeSnippetFile(cssOutputFile, cssSnippets);
+	writeSnippetFile(phpOutputFile, phpSnippets);
 
 	console.log(
 		`Generated ${Object.keys(mainSnippets).length} snippets -> ${mainOutputFile}`,
 	);
 	console.log(
 		`Generated ${Object.keys(cssSnippets).length} snippets -> ${cssOutputFile}`,
+	);
+	console.log(
+		`Generated ${Object.keys(phpSnippets).length} snippets -> ${phpOutputFile}`,
 	);
 }
 

@@ -1,0 +1,6 @@
+<?php
+\$${1:item} = R::load('${2:item}', (int) \$id);
+if (\$${1:item}->id) {
+	R::trash(\$${1:item});
+}
+$0

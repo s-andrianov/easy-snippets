@@ -1,0 +1,78 @@
+<div class="d-flex" style="min-height: 100vh;">
+	<!-- Sidebar (offcanvas on mobile, static on md+) -->
+	<aside class="offcanvas-md offcanvas-start bg-dark text-white" tabindex="-1" id="${1:adminSidebar}" style="width: 260px;">
+		<div class="offcanvas-header border-bottom border-secondary">
+			<h5 class="offcanvas-title fw-bold">${2:Admin}</h5>
+			<button type="button" class="btn-close btn-close-white" data-bs-dismiss="offcanvas" data-bs-target="#${1:adminSidebar}"></button>
+		</div>
+		<div class="offcanvas-body p-0 d-flex flex-column">
+			<a href="${3:#}" class="d-none d-md-flex align-items-center p-3 text-white text-decoration-none border-bottom border-secondary">
+				<i class="bi bi-stack fs-4 me-2"></i><span class="fs-5 fw-bold">${2:Admin}</span>
+			</a>
+			<ul class="nav nav-pills flex-column mb-auto p-2">
+				<li><a href="${4:#}" class="nav-link active"><i class="bi bi-speedometer2 me-2"></i>${5:Dashboard}</a></li>
+				<li><a href="${6:#}" class="nav-link text-white"><i class="bi bi-bag me-2"></i>${7:Orders}</a></li>
+				<li><a href="${8:#}" class="nav-link text-white"><i class="bi bi-people me-2"></i>${9:Customers}</a></li>
+				<li><a href="${10:#}" class="nav-link text-white"><i class="bi bi-box-seam me-2"></i>${11:Products}</a></li>
+				<li><a href="${12:#}" class="nav-link text-white"><i class="bi bi-graph-up me-2"></i>${13:Analytics}</a></li>
+				<li class="my-2"><hr class="bg-secondary" /></li>
+				<li><a href="${14:#}" class="nav-link text-white"><i class="bi bi-gear me-2"></i>${15:Settings}</a></li>
+			</ul>
+		</div>
+	</aside>
+	<!-- Main column -->
+	<div class="flex-grow-1 d-flex flex-column" style="min-width: 0;">
+		<!-- Topbar -->
+		<nav class="navbar navbar-expand-md bg-body sticky-top border-bottom shadow-sm">
+			<div class="container-fluid">
+				<button class="btn btn-outline-secondary d-md-none me-2" type="button" data-bs-toggle="offcanvas" data-bs-target="#${1:adminSidebar}">
+					<i class="bi bi-list"></i>
+				</button>
+				<form class="d-none d-md-flex flex-grow-1 me-3" role="search" style="max-width: 420px;">
+					<div class="input-group">
+						<span class="input-group-text bg-body-tertiary border-end-0"><i class="bi bi-search"></i></span>
+						<input class="form-control border-start-0" type="search" placeholder="${16:Search...}" />
+					</div>
+				</form>
+				<ul class="navbar-nav ms-auto align-items-center">
+					<li class="nav-item dropdown">
+						<a href="#" class="nav-link position-relative" data-bs-toggle="dropdown">
+							<i class="bi bi-bell fs-5"></i>
+							<span class="position-absolute top-0 start-100 translate-middle p-1 bg-danger rounded-circle"></span>
+						</a>
+						<ul class="dropdown-menu dropdown-menu-end shadow">
+							<li><h6 class="dropdown-header">${17:Notifications}</h6></li>
+							<li><a class="dropdown-item small" href="${18:#}">${19:You have a new order}</a></li>
+						</ul>
+					</li>
+					<li class="nav-item dropdown">
+						<a href="#" class="nav-link d-flex align-items-center" data-bs-toggle="dropdown">
+							<img src="${20:https://via.placeholder.com/36}" width="36" height="36" alt="" class="rounded-circle me-2" />
+							<span class="d-none d-lg-inline">${21:User Name}</span>
+						</a>
+						<ul class="dropdown-menu dropdown-menu-end shadow">
+							<li><a class="dropdown-item" href="${22:#}">${23:Profile}</a></li>
+							<li><a class="dropdown-item" href="${24:#}">${25:Settings}</a></li>
+							<li><hr class="dropdown-divider" /></li>
+							<li><a class="dropdown-item" href="${26:#}">${27:Sign out}</a></li>
+						</ul>
+					</li>
+				</ul>
+			</div>
+		</nav>
+		<!-- Page content -->
+		<main class="flex-grow-1 p-3 p-md-4 bg-body-tertiary">
+			<div class="d-flex flex-column flex-md-row justify-content-between align-items-md-center mb-4 gap-2">
+				<div>
+					<h1 class="h3 fw-bold mb-1">${28:Dashboard}</h1>
+					<p class="text-body-secondary mb-0 small">${29:Welcome back, here's what's happening today.}</p>
+				</div>
+				<div class="d-flex gap-2">
+					<button class="btn btn-outline-secondary"><i class="bi bi-download me-1"></i>${30:Export}</button>
+					<button class="btn btn-primary"><i class="bi bi-plus-lg me-1"></i>${31:Add new}</button>
+				</div>
+			</div>
+			$32
+		</main>
+	</div>
+</div>

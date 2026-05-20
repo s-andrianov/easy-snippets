@@ -1,0 +1,27 @@
+<?php
+if (\$_SERVER['REQUEST_METHOD'] === 'POST') {
+	if (!csrf_check()) {
+		flash('danger', 'Invalid form submission.');
+		redirect(\$_SERVER['HTTP_REFERER'] ?? '/');
+	}
+
+	\$${1:field} = trim((string) (\$_POST['${1:field}'] ?? ''));
+
+	\$errors = [];
+	if (\$${1:field} === '') {
+		\$errors[] = '${2:Field} is required.';
+	}
+
+	if (\$errors) {
+		\$_SESSION['old'] = \$_POST;
+		foreach (\$errors as \$err) flash('danger', \$err);
+		redirect(\$_SERVER['HTTP_REFERER'] ?? '/');
+	}
+
+	// Persist
+	$3
+
+	flash('success', '${4:Saved successfully.}');
+	redirect('${5:/}');
+}
+$0

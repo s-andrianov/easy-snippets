@@ -1,0 +1,49 @@
+<section class="vh-100 d-flex align-items-center bg-body-tertiary">
+	<div class="container">
+		<div class="row justify-content-center">
+			<div class="col-12 col-sm-10 col-md-8 col-lg-5 col-xl-4">
+				<div class="card border-0 shadow-sm">
+					<div class="card-body p-4 p-md-5">
+						<div class="text-center mb-4">
+							<h1 class="h3 fw-bold mb-1">${1:Sign in}</h1>
+							<p class="text-body-secondary mb-0">${2:Use one of the providers below}</p>
+						</div>
+						<div class="d-grid gap-2 mb-4">
+							<button type="button" class="btn btn-outline-secondary py-2 d-flex align-items-center justify-content-center gap-2">
+								<i class="bi bi-google"></i><span>${3:Continue with Google}</span>
+							</button>
+							<button type="button" class="btn btn-outline-secondary py-2 d-flex align-items-center justify-content-center gap-2">
+								<i class="bi bi-github"></i><span>${4:Continue with GitHub}</span>
+							</button>
+							<button type="button" class="btn btn-outline-secondary py-2 d-flex align-items-center justify-content-center gap-2">
+								<i class="bi bi-apple"></i><span>${5:Continue with Apple}</span>
+							</button>
+							<button type="button" class="btn btn-outline-secondary py-2 d-flex align-items-center justify-content-center gap-2">
+								<i class="bi bi-microsoft"></i><span>${6:Continue with Microsoft}</span>
+							</button>
+						</div>
+						<div class="d-flex align-items-center text-body-secondary small my-3">
+							<hr class="flex-grow-1" />
+							<span class="px-3">${7:or}</span>
+							<hr class="flex-grow-1" />
+						</div>
+						<form>
+							<div class="form-floating mb-3">
+								<input type="email" class="form-control" id="loginEmail" placeholder="name@example.com" required />
+								<label for="loginEmail">${8:Email address}</label>
+							</div>
+							<div class="form-floating mb-3">
+								<input type="password" class="form-control" id="loginPassword" placeholder="Password" required />
+								<label for="loginPassword">${9:Password}</label>
+							</div>
+							<button type="submit" class="btn btn-primary w-100 py-2 mb-3">${10:Sign in with email}</button>
+							<p class="text-center small text-body-secondary mb-0">
+								${11:New here?} <a href="${12:#}" class="text-decoration-none">${13:Create an account}</a>
+							</p>
+						</form>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</section>

@@ -1,0 +1,26 @@
+<div class="card h-100 border-0 shadow-sm overflow-hidden">
+	<div class="position-relative">
+		<span class="badge text-bg-danger position-absolute top-0 start-0 m-2">${1:-20%}</span>
+		<button type="button" class="btn btn-light btn-sm rounded-circle position-absolute top-0 end-0 m-2 shadow-sm" aria-label="${2:Add to wishlist}"><i class="bi bi-heart" aria-hidden="true"></i></button>
+		<a href="${3:#}" class="d-block ratio ratio-1x1">
+			<img src="${4:https://via.placeholder.com/400}" alt="${5:Product}" class="w-100 h-100 object-fit-cover" />
+		</a>
+	</div>
+	<div class="card-body p-3">
+		<div class="text-body-secondary small mb-1">${6:Category}</div>
+		<a href="${3:#}" class="text-decoration-none text-body">
+			<h6 class="card-title mb-2 text-truncate">${7:Product name goes here}</h6>
+		</a>
+		<div class="text-warning small mb-2">
+			<i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star"></i>
+			<span class="text-body-secondary ms-1">(${8:24})</span>
+		</div>
+		<div class="d-flex justify-content-between align-items-center">
+			<div>
+				<span class="fw-bold">$${9:39.99}</span>
+				<small class="text-body-secondary text-decoration-line-through ms-1">$${10:49.99}</small>
+			</div>
+			<button type="button" class="btn btn-sm btn-primary" aria-label="${11:Add to cart}"><i class="bi bi-cart-plus" aria-hidden="true"></i></button>
+		</div>
+	</div>
+</div>

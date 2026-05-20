@@ -1,0 +1,91 @@
+<!doctype html>
+<html lang="en" data-bs-theme="light">
+	<head>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1" />
+		<title>${1:My profile}</title>
+		<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet" />
+		<link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css" rel="stylesheet" />
+	</head>
+	<body class="bg-body-tertiary">
+		<nav class="navbar navbar-expand-md bg-body border-bottom sticky-top">
+			<div class="container">
+				<a class="navbar-brand fw-bold" href="#">${2:Brand}</a>
+				<div class="d-flex align-items-center ms-auto">
+					<img src="${3:https://via.placeholder.com/36}" width="36" height="36" alt="" class="rounded-circle me-2" />
+					<span class="small fw-semibold d-none d-sm-inline">${4:User Name}</span>
+				</div>
+			</div>
+		</nav>
+		<div class="container py-4 py-md-5">
+			<div class="row g-4">
+				<div class="col-lg-3">
+					<div class="card border-0 shadow-sm mb-3">
+						<div class="card-body text-center p-4">
+							<img src="${5:https://via.placeholder.com/120}" alt="" class="rounded-circle mb-3" width="120" height="120" />
+							<h5 class="fw-bold mb-1">${6:Jane Cooper}</h5>
+							<p class="text-body-secondary small mb-3">${7:Product Designer}</p>
+							<button class="btn btn-outline-primary btn-sm">${8:Edit profile}</button>
+						</div>
+					</div>
+					<div class="list-group shadow-sm">
+						<a href="#tab-profile" class="list-group-item list-group-item-action active" data-bs-toggle="list"><i class="bi bi-person me-2"></i>${9:Profile}</a>
+						<a href="#tab-account" class="list-group-item list-group-item-action" data-bs-toggle="list"><i class="bi bi-gear me-2"></i>${10:Account}</a>
+						<a href="#tab-security" class="list-group-item list-group-item-action" data-bs-toggle="list"><i class="bi bi-shield-lock me-2"></i>${11:Security}</a>
+						<a href="#tab-notify" class="list-group-item list-group-item-action" data-bs-toggle="list"><i class="bi bi-bell me-2"></i>${12:Notifications}</a>
+						<a href="#tab-billing" class="list-group-item list-group-item-action" data-bs-toggle="list"><i class="bi bi-credit-card me-2"></i>${13:Billing}</a>
+					</div>
+				</div>
+				<div class="col-lg-9">
+					<div class="tab-content">
+						<div class="tab-pane fade show active" id="tab-profile">
+							<div class="card border-0 shadow-sm"><div class="card-body p-4">
+								<h5 class="fw-bold mb-3">${14:Personal information}</h5>
+								<form class="row g-3">
+									<div class="col-sm-6"><label class="form-label">${15:First name}</label><input type="text" class="form-control" value="${16:Jane}" /></div>
+									<div class="col-sm-6"><label class="form-label">${17:Last name}</label><input type="text" class="form-control" value="${18:Cooper}" /></div>
+									<div class="col-sm-6"><label class="form-label">${19:Email}</label><input type="email" class="form-control" value="${20:jane@example.com}" /></div>
+									<div class="col-sm-6"><label class="form-label">${21:Phone}</label><input type="tel" class="form-control" /></div>
+									<div class="col-12"><label class="form-label">${22:Bio}</label><textarea class="form-control" rows="3"></textarea></div>
+									<div class="col-12"><button class="btn btn-primary">${23:Save changes}</button></div>
+								</form>
+							</div></div>
+						</div>
+						<div class="tab-pane fade" id="tab-security">
+							<div class="card border-0 shadow-sm"><div class="card-body p-4">
+								<h5 class="fw-bold mb-3">${24:Change password}</h5>
+								<form class="row g-3">
+									<div class="col-12"><label class="form-label">${25:Current password}</label><input type="password" class="form-control" /></div>
+									<div class="col-sm-6"><label class="form-label">${26:New password}</label><input type="password" class="form-control" /></div>
+									<div class="col-sm-6"><label class="form-label">${27:Confirm}</label><input type="password" class="form-control" /></div>
+									<div class="col-12"><button class="btn btn-primary">${28:Update password}</button></div>
+								</form>
+							</div></div>
+						</div>
+						<div class="tab-pane fade" id="tab-notify">
+							<div class="card border-0 shadow-sm"><div class="card-body p-4">
+								<h5 class="fw-bold mb-3">${29:Notification preferences}</h5>
+								<div class="form-check form-switch mb-2"><input class="form-check-input" type="checkbox" checked /><label class="form-check-label">${30:Email me about updates}</label></div>
+								<div class="form-check form-switch mb-2"><input class="form-check-input" type="checkbox" /><label class="form-check-label">${31:Email me about new features}</label></div>
+								<div class="form-check form-switch mb-2"><input class="form-check-input" type="checkbox" checked /><label class="form-check-label">${32:Email me about security alerts}</label></div>
+							</div></div>
+						</div>
+						<div class="tab-pane fade" id="tab-account">
+							<div class="card border-0 shadow-sm"><div class="card-body p-4">
+								<h5 class="fw-bold mb-3">${33:Account settings}</h5>
+								<p class="text-body-secondary mb-0">${34:Update your timezone, language and other account preferences.}</p>
+							</div></div>
+						</div>
+						<div class="tab-pane fade" id="tab-billing">
+							<div class="card border-0 shadow-sm"><div class="card-body p-4">
+								<h5 class="fw-bold mb-3">${35:Billing}</h5>
+								<p class="text-body-secondary mb-0">${36:Manage your subscription and invoices.}</p>
+							</div></div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"></script>
+	</body>
+</html>

@@ -1,0 +1,92 @@
+<?php
+/**
+ * Helpers — CSRF, flash, sanitize, redirect, current user.
+ * Usage: require_once __DIR__ . '/helpers.php';
+ */
+
+declare(strict_types=1);
+
+use RedBeanPHP\\R;
+
+/** HTML-escape user input for safe output. */
+function e(?string \$value): string {
+	return htmlspecialchars((string) \$value, ENT_QUOTES | ENT_SUBSTITUTE, 'UTF-8');
+}
+
+/** Get CSRF token (creates one if missing). */
+function csrf_token(): string {
+	if (empty(\$_SESSION['csrf'])) {
+		\$_SESSION['csrf'] = bin2hex(random_bytes(32));
+	}
+	return \$_SESSION['csrf'];
+}
+
+/** Hidden CSRF input — print directly in <form>. */
+function csrf_field(): string {
+	return '<input type="hidden" name="csrf" value="' . e(csrf_token()) . '">';
+}
+
+/** Verify CSRF token from POST. */
+function csrf_check(): bool {
+	\$token = \$_POST['csrf'] ?? '';
+	return is_string(\$token) && hash_equals(csrf_token(), \$token);
+}
+
+/** Flash a message (type: success, danger, warning, info). */
+function flash(string \$type, string \$message): void {
+	\$_SESSION['flash'][] = ['type' => \$type, 'message' => \$message];
+}
+
+/** Render all flashes as BS5 alerts and clear them. */
+function render_flashes(): string {
+	if (empty(\$_SESSION['flash'])) return '';
+	\$html = '';
+	foreach (\$_SESSION['flash'] as \$f) {
+		\$html .= '<div class="alert alert-' . e(\$f['type']) . ' alert-dismissible fade show" role="alert">'
+			. e(\$f['message'])
+			. '<button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>'
+			. '</div>';
+	}
+	unset(\$_SESSION['flash']);
+	return \$html;
+}
+
+/** Redirect and stop execution. */
+function redirect(string \$url): never {
+	header('Location: ' . \$url);
+	exit;
+}
+
+/** Get currently logged-in user (RedBean bean) or null. */
+function current_user(): ?\\RedBeanPHP\\OODBBean {
+	if (empty(\$_SESSION['user_id'])) return null;
+	\$u = R::load('user', (int) \$_SESSION['user_id']);
+	return \$u->id ? \$u : null;
+}
+
+/** Require auth or redirect to login. */
+function require_auth(string \$loginUrl = '/login.php'): \\RedBeanPHP\\OODBBean {
+	\$u = current_user();
+	if (!\$u) {
+		flash('warning', 'Please sign in to continue.');
+		redirect(\$loginUrl);
+	}
+	return \$u;
+}
+
+/** Require admin role or 403. */
+function require_admin(): \\RedBeanPHP\\OODBBean {
+	\$u = require_auth();
+	if (\$u->role !== 'admin') {
+		http_response_code(403);
+		echo 'Forbidden';
+		exit;
+	}
+	return \$u;
+}
+
+/** Old() — repopulate form fields after validation error. */
+function old(string \$key, string \$default = ''): string {
+	return e(\$_SESSION['old'][\$key] ?? \$default);
+}
+$1

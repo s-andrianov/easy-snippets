@@ -1,0 +1,31 @@
+<?php
+/**
+ * Safe single-file upload helper.
+ * Returns relative path on success, null on failure.
+ */
+function save_upload(string \$field, string \$dir = 'uploads', array \$allowed = ['jpg','jpeg','png','gif','webp','pdf']): ?string {
+	if (empty(\$_FILES[\$field]) || \$_FILES[\$field]['error'] !== UPLOAD_ERR_OK) {
+		return null;
+	}
+
+	\$file = \$_FILES[\$field];
+	\$ext  = strtolower(pathinfo(\$file['name'], PATHINFO_EXTENSION));
+
+	if (!in_array(\$ext, \$allowed, true)) return null;
+	if (\$file['size'] > 5 * 1024 * 1024)  return null;
+
+	\$absDir = __DIR__ . '/../' . \$dir;
+	if (!is_dir(\$absDir)) mkdir(\$absDir, 0755, true);
+
+	\$safeName = bin2hex(random_bytes(12)) . '.' . \$ext;
+	\$dest     = \$absDir . '/' . \$safeName;
+
+	if (!move_uploaded_file(\$file['tmp_name'], \$dest)) return null;
+
+	return '/' . \$dir . '/' . \$safeName;
+}
+
+// Usage:
+// \$path = save_upload('avatar');
+// if (\$path) \$user->avatar = \$path;
+$0

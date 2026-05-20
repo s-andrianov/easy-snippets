@@ -1,0 +1,72 @@
+<section class="py-5 py-md-6">
+	<div class="container">
+		<div class="row g-5">
+			<div class="col-lg-5">
+				<h2 class="display-6 fw-bold mb-3">${1:Get in touch}</h2>
+				<p class="text-body-secondary mb-4">${2:Have a question or want to work together? Send us a message and we'll get back within one business day.}</p>
+				<ul class="list-unstyled">
+					<li class="mb-3 d-flex">
+						<i class="bi bi-geo-alt-fill text-primary fs-5 me-3"></i>
+						<div>
+							<div class="fw-semibold">${3:Office}</div>
+							<div class="text-body-secondary small">${4:Sample Street 1, City, Country}</div>
+						</div>
+					</li>
+					<li class="mb-3 d-flex">
+						<i class="bi bi-envelope-fill text-primary fs-5 me-3"></i>
+						<div>
+							<div class="fw-semibold">${5:Email}</div>
+							<a href="mailto:${6:hello@example.com}" class="text-body-secondary small text-decoration-none">${6:hello@example.com}</a>
+						</div>
+					</li>
+					<li class="d-flex">
+						<i class="bi bi-telephone-fill text-primary fs-5 me-3"></i>
+						<div>
+							<div class="fw-semibold">${7:Phone}</div>
+							<a href="tel:${8:+1234567890}" class="text-body-secondary small text-decoration-none">${8:+1 (234) 567-890}</a>
+						</div>
+					</li>
+				</ul>
+			</div>
+			<div class="col-lg-7">
+				<div class="card border-0 shadow-sm">
+					<div class="card-body p-4 p-md-5">
+						<form class="row g-3">
+							<div class="col-sm-6">
+								<label for="cfFirst" class="form-label">${9:First name}</label>
+								<input id="cfFirst" type="text" class="form-control" required />
+							</div>
+							<div class="col-sm-6">
+								<label for="cfLast" class="form-label">${10:Last name}</label>
+								<input id="cfLast" type="text" class="form-control" required />
+							</div>
+							<div class="col-sm-6">
+								<label for="cfEmail" class="form-label">${11:Email}</label>
+								<input id="cfEmail" type="email" class="form-control" required />
+							</div>
+							<div class="col-sm-6">
+								<label for="cfPhone" class="form-label">${12:Phone}</label>
+								<input id="cfPhone" type="tel" class="form-control" />
+							</div>
+							<div class="col-12">
+								<label for="cfSubject" class="form-label">${13:Subject}</label>
+								<input id="cfSubject" type="text" class="form-control" />
+							</div>
+							<div class="col-12">
+								<label for="cfMessage" class="form-label">${14:Message}</label>
+								<textarea id="cfMessage" rows="5" class="form-control" required></textarea>
+							</div>
+							<div class="col-12 form-check ms-2">
+								<input type="checkbox" class="form-check-input" id="cfConsent" required />
+								<label for="cfConsent" class="form-check-label small">${15:I agree to the <a href="#" class="text-decoration-none">privacy policy</a>}</label>
+							</div>
+							<div class="col-12">
+								<button type="submit" class="btn btn-primary btn-lg px-4">${16:Send message}</button>
+							</div>
+						</form>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</section>

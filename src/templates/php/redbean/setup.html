@@ -1,0 +1,12 @@
+<?php
+use RedBeanPHP\\R;
+
+R::setup(
+	'${1|mysql,sqlite,pgsql|}:host=${2:127.0.0.1};dbname=${3:app_db};charset=utf8mb4',
+	'${4:root}',
+	'${5:}'
+);
+
+// In production, freeze schema (no auto-create tables):
+// R::freeze(true);
+$0

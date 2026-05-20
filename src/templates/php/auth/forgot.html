@@ -1,0 +1,71 @@
+<?php
+declare(strict_types=1);
+
+require_once __DIR__ . '/bootstrap.php';
+
+use RedBeanPHP\\R;
+
+\$sent = false;
+
+if (\$_SERVER['REQUEST_METHOD'] === 'POST' && csrf_check()) {
+	\$email = trim((string) (\$_POST['email'] ?? ''));
+	\$user  = R::findOne('user', 'email = ?', [\$email]);
+
+	if (\$user) {
+		\$token = bin2hex(random_bytes(32));
+		\$user->reset_token   = \$token;
+		\$user->reset_sent_at = date('Y-m-d H:i:s');
+		R::store(\$user);
+
+		\$link = '${1:https://example.com}/reset.php?token=' . \$token;
+
+		mail(
+			\$user->email,
+			'${2:Reset your password}',
+			"Click the link to reset your password:\\n\$link",
+			'From: ${3:no-reply@example.com}'
+		);
+	}
+
+	// Always respond the same, to avoid leaking which emails exist
+	\$sent = true;
+}
+?>
+<!doctype html>
+<html lang="en" data-bs-theme="light">
+<head>
+	<meta charset="utf-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1" />
+	<title>Forgot password</title>
+	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet" />
+</head>
+<body class="bg-body-tertiary">
+	<section class="vh-100 d-flex align-items-center">
+		<div class="container">
+			<div class="row justify-content-center">
+				<div class="col-12 col-md-6 col-lg-4">
+					<div class="card border-0 shadow-sm"><div class="card-body p-4 p-md-5">
+						<h1 class="h4 fw-bold text-center mb-3">Forgot your password?</h1>
+
+						<?php if (\$sent): ?>
+							<div class="alert alert-success">If that email exists, a reset link has been sent.</div>
+							<a href="${4:/login.php}" class="btn btn-outline-secondary w-100">Back to sign in</a>
+						<?php else: ?>
+							<p class="text-body-secondary text-center mb-4">Enter your email and we'll send a reset link.</p>
+							<form method="post">
+								<?= csrf_field() ?>
+								<div class="form-floating mb-3">
+									<input type="email" name="email" class="form-control" id="fp_email" placeholder="name@example.com" required />
+									<label for="fp_email">Email address</label>
+								</div>
+								<button class="btn btn-primary w-100 py-2 mb-2">Send reset link</button>
+								<a href="${5:/login.php}" class="d-block text-center small text-decoration-none">Back to sign in</a>
+							</form>
+						<?php endif; ?>
+					</div></div>
+				</div>
+			</div>
+		</div>
+	</section>
+</body>
+</html>

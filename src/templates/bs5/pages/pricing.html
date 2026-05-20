@@ -1,0 +1,120 @@
+<!doctype html>
+<html lang="en" data-bs-theme="light">
+	<head>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1" />
+		<title>${1:Pricing} &mdash; ${2:Brand}</title>
+		<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet" />
+		<link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css" rel="stylesheet" />
+	</head>
+	<body>
+		<nav class="navbar navbar-expand-lg sticky-top bg-body border-bottom">
+			<div class="container">
+				<a class="navbar-brand fw-bold" href="#">${2:Brand}</a>
+				<button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#mainNav"><span class="navbar-toggler-icon"></span></button>
+				<div class="collapse navbar-collapse" id="mainNav">
+					<ul class="navbar-nav me-auto">
+						<li class="nav-item"><a class="nav-link" href="${3:#}">${4:Product}</a></li>
+						<li class="nav-item"><a class="nav-link active" href="#">${5:Pricing}</a></li>
+						<li class="nav-item"><a class="nav-link" href="${6:#}">${7:Docs}</a></li>
+					</ul>
+					<div class="d-flex gap-2">
+						<a href="${8:/login}" class="btn btn-outline-secondary">${9:Sign in}</a>
+					</div>
+				</div>
+			</div>
+		</nav>
+		<header class="py-5 py-md-6 text-center">
+			<div class="container">
+				<h1 class="display-4 fw-bold mb-3">${10:Pricing that scales with you}</h1>
+				<p class="lead text-body-secondary mb-4">${11:Simple, transparent pricing. Cancel anytime.}</p>
+				<div class="btn-group" role="group">
+					<input type="radio" class="btn-check" name="billing" id="bM" checked />
+					<label class="btn btn-outline-primary px-4" for="bM">${12:Monthly}</label>
+					<input type="radio" class="btn-check" name="billing" id="bY" />
+					<label class="btn btn-outline-primary px-4" for="bY">${13:Yearly (-20%)}</label>
+				</div>
+			</div>
+		</header>
+		<section class="py-5">
+			<div class="container">
+				<div class="row g-4 justify-content-center">
+					<div class="col-md-6 col-lg-3">
+						<div class="card h-100 border-0 shadow-sm"><div class="card-body p-4 d-flex flex-column">
+							<h3 class="h5 fw-bold">${14:Free}</h3>
+							<p class="text-body-secondary small">${15:For trying out}</p>
+							<div class="display-5 fw-bold my-3">$0<span class="fs-6 fw-normal text-body-secondary">/mo</span></div>
+							<ul class="list-unstyled flex-grow-1 small mb-4">
+								<li class="mb-2"><i class="bi bi-check2 text-success me-2"></i>${16:1 user}</li>
+								<li class="mb-2"><i class="bi bi-check2 text-success me-2"></i>${17:1 project}</li>
+								<li class="mb-2"><i class="bi bi-check2 text-success me-2"></i>${18:Community support}</li>
+							</ul>
+							<a href="${19:#}" class="btn btn-outline-primary mt-auto">${20:Get started}</a>
+						</div></div>
+					</div>
+					<div class="col-md-6 col-lg-3">
+						<div class="card h-100 border-0 shadow-sm"><div class="card-body p-4 d-flex flex-column">
+							<h3 class="h5 fw-bold">${21:Starter}</h3>
+							<p class="text-body-secondary small">${22:For freelancers}</p>
+							<div class="display-5 fw-bold my-3">$${23:9}<span class="fs-6 fw-normal text-body-secondary">/mo</span></div>
+							<ul class="list-unstyled flex-grow-1 small mb-4">
+								<li class="mb-2"><i class="bi bi-check2 text-success me-2"></i>${24:5 users}</li>
+								<li class="mb-2"><i class="bi bi-check2 text-success me-2"></i>${25:10 projects}</li>
+								<li class="mb-2"><i class="bi bi-check2 text-success me-2"></i>${26:Email support}</li>
+							</ul>
+							<a href="${27:#}" class="btn btn-outline-primary mt-auto">${28:Subscribe}</a>
+						</div></div>
+					</div>
+					<div class="col-md-6 col-lg-3">
+						<div class="card h-100 border-primary border-2 shadow position-relative">
+							<span class="badge text-bg-primary position-absolute top-0 start-50 translate-middle px-3 py-2">${29:Popular}</span>
+							<div class="card-body p-4 d-flex flex-column">
+								<h3 class="h5 fw-bold">${30:Pro}</h3>
+								<p class="text-body-secondary small">${31:For growing teams}</p>
+								<div class="display-5 fw-bold my-3">$${32:29}<span class="fs-6 fw-normal text-body-secondary">/mo</span></div>
+								<ul class="list-unstyled flex-grow-1 small mb-4">
+									<li class="mb-2"><i class="bi bi-check2 text-success me-2"></i>${33:25 users}</li>
+									<li class="mb-2"><i class="bi bi-check2 text-success me-2"></i>${34:Unlimited projects}</li>
+									<li class="mb-2"><i class="bi bi-check2 text-success me-2"></i>${35:Priority support}</li>
+									<li class="mb-2"><i class="bi bi-check2 text-success me-2"></i>${36:Advanced analytics}</li>
+								</ul>
+								<a href="${37:#}" class="btn btn-primary mt-auto">${38:Start trial}</a>
+							</div>
+						</div>
+					</div>
+					<div class="col-md-6 col-lg-3">
+						<div class="card h-100 border-0 shadow-sm"><div class="card-body p-4 d-flex flex-column">
+							<h3 class="h5 fw-bold">${39:Enterprise}</h3>
+							<p class="text-body-secondary small">${40:For organizations}</p>
+							<div class="display-5 fw-bold my-3">${41:Custom}</div>
+							<ul class="list-unstyled flex-grow-1 small mb-4">
+								<li class="mb-2"><i class="bi bi-check2 text-success me-2"></i>${42:Unlimited users}</li>
+								<li class="mb-2"><i class="bi bi-check2 text-success me-2"></i>${43:SSO &amp; SAML}</li>
+								<li class="mb-2"><i class="bi bi-check2 text-success me-2"></i>${44:Dedicated manager}</li>
+								<li class="mb-2"><i class="bi bi-check2 text-success me-2"></i>${45:SLA}</li>
+							</ul>
+							<a href="${46:#}" class="btn btn-outline-primary mt-auto">${47:Contact us}</a>
+						</div></div>
+					</div>
+				</div>
+			</div>
+		</section>
+		<section class="py-5 bg-body-tertiary">
+			<div class="container">
+				<div class="row justify-content-center">
+					<div class="col-lg-8">
+						<h2 class="display-6 fw-bold text-center mb-4">${48:Frequently asked}</h2>
+						<div class="accordion accordion-flush" id="pricingFaq">
+							<div class="accordion-item bg-transparent"><h3 class="accordion-header"><button class="accordion-button collapsed fw-semibold" data-bs-toggle="collapse" data-bs-target="#pf1">${49:Can I switch plans later?}</button></h3><div id="pf1" class="accordion-collapse collapse" data-bs-parent="#pricingFaq"><div class="accordion-body text-body-secondary">${50:Yes, anytime from billing.}</div></div></div>
+							<div class="accordion-item bg-transparent"><h3 class="accordion-header"><button class="accordion-button collapsed fw-semibold" data-bs-toggle="collapse" data-bs-target="#pf2">${51:Do you offer refunds?}</button></h3><div id="pf2" class="accordion-collapse collapse" data-bs-parent="#pricingFaq"><div class="accordion-body text-body-secondary">${52:Within 30 days, no questions asked.}</div></div></div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</section>
+		<footer class="py-4 border-top">
+			<div class="container text-center text-body-secondary small">&copy; ${53:2025} ${2:Brand}</div>
+		</footer>
+		<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"></script>
+	</body>
+</html>

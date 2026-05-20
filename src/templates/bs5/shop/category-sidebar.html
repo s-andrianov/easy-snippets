@@ -1,0 +1,33 @@
+<aside class="card border-0 shadow-sm">
+	<div class="card-body p-3 p-md-4">
+		<div class="mb-4">
+			<h6 class="fw-bold mb-3">${1:Category}</h6>
+			<div class="d-flex flex-column gap-1">
+				<a href="${2:#}" class="text-decoration-none d-flex justify-content-between"><span>${3:All}</span><span class="text-body-secondary small">${4:248}</span></a>
+				<a href="${5:#}" class="text-decoration-none d-flex justify-content-between"><span>${6:Clothing}</span><span class="text-body-secondary small">${7:84}</span></a>
+				<a href="${8:#}" class="text-decoration-none d-flex justify-content-between"><span>${9:Accessories}</span><span class="text-body-secondary small">${10:42}</span></a>
+				<a href="${11:#}" class="text-decoration-none d-flex justify-content-between"><span>${12:Footwear}</span><span class="text-body-secondary small">${13:28}</span></a>
+			</div>
+		</div>
+		<div class="mb-4">
+			<h6 class="fw-bold mb-3">${14:Price}</h6>
+			<input type="range" class="form-range" min="0" max="500" step="10" />
+			<div class="d-flex gap-2">
+				<input type="number" class="form-control form-control-sm" placeholder="${15:Min}" />
+				<input type="number" class="form-control form-control-sm" placeholder="${16:Max}" />
+			</div>
+		</div>
+		<div class="mb-4">
+			<h6 class="fw-bold mb-3">${17:Brand}</h6>
+			<div class="form-check"><input type="checkbox" class="form-check-input" id="brA" /><label class="form-check-label" for="brA">${18:Brand A}</label></div>
+			<div class="form-check"><input type="checkbox" class="form-check-input" id="brB" /><label class="form-check-label" for="brB">${19:Brand B}</label></div>
+			<div class="form-check"><input type="checkbox" class="form-check-input" id="brC" /><label class="form-check-label" for="brC">${20:Brand C}</label></div>
+		</div>
+		<div class="mb-4">
+			<h6 class="fw-bold mb-3">${21:Rating}</h6>
+			<div class="form-check"><input type="radio" class="form-check-input" name="rating" id="r4" /><label class="form-check-label small" for="r4"><span class="text-warning"><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i></span> ${22:&amp; up}</label></div>
+			<div class="form-check"><input type="radio" class="form-check-input" name="rating" id="r3" /><label class="form-check-label small" for="r3"><span class="text-warning"><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i></span> ${23:&amp; up}</label></div>
+		</div>
+		<button class="btn btn-primary w-100">${24:Apply filters}</button>
+	</div>
+</aside>

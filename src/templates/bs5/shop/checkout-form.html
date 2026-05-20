@@ -1,0 +1,69 @@
+<section class="py-4 py-md-5 bg-body-tertiary">
+	<div class="container">
+		<h1 class="h3 fw-bold mb-4">${1:Checkout}</h1>
+		<div class="row g-4">
+			<div class="col-lg-8">
+				<form action="${2:/checkout}" method="post">
+					<div class="card border-0 shadow-sm mb-3"><div class="card-body p-4">
+						<h5 class="fw-bold mb-3">${3:Contact information}</h5>
+						<div class="row g-3">
+							<div class="col-12"><label class="form-label">${4:Email}</label><input type="email" name="email" class="form-control" required /></div>
+							<div class="col-sm-6"><label class="form-label">${5:First name}</label><input type="text" name="first_name" class="form-control" required /></div>
+							<div class="col-sm-6"><label class="form-label">${6:Last name}</label><input type="text" name="last_name" class="form-control" required /></div>
+							<div class="col-12"><label class="form-label">${7:Phone}</label><input type="tel" name="phone" class="form-control" /></div>
+						</div>
+					</div></div>
+					<div class="card border-0 shadow-sm mb-3"><div class="card-body p-4">
+						<h5 class="fw-bold mb-3">${8:Shipping address}</h5>
+						<div class="row g-3">
+							<div class="col-12"><label class="form-label">${9:Address}</label><input type="text" name="address" class="form-control" required /></div>
+							<div class="col-12"><label class="form-label">${10:Apartment, suite (optional)}</label><input type="text" name="address2" class="form-control" /></div>
+							<div class="col-md-6"><label class="form-label">${11:City}</label><input type="text" name="city" class="form-control" required /></div>
+							<div class="col-md-3"><label class="form-label">${12:State}</label><input type="text" name="state" class="form-control" /></div>
+							<div class="col-md-3"><label class="form-label">${13:Zip}</label><input type="text" name="zip" class="form-control" required /></div>
+							<div class="col-12"><label class="form-label">${14:Country}</label>
+								<select name="country" class="form-select" required>
+									<option value="">${15:Choose...}</option>
+									<option>${16:United States}</option>
+									<option>${17:United Kingdom}</option>
+								</select>
+							</div>
+						</div>
+					</div></div>
+					<div class="card border-0 shadow-sm mb-3"><div class="card-body p-4">
+						<h5 class="fw-bold mb-3">${18:Payment}</h5>
+						<div class="form-check mb-2"><input type="radio" class="form-check-input" name="payment" id="payCard" checked /><label class="form-check-label" for="payCard"><i class="bi bi-credit-card me-1"></i>${19:Credit card}</label></div>
+						<div class="form-check mb-3"><input type="radio" class="form-check-input" name="payment" id="payPaypal" /><label class="form-check-label" for="payPaypal"><i class="bi bi-paypal me-1"></i>${20:PayPal}</label></div>
+						<div class="row g-3">
+							<div class="col-12"><label class="form-label">${21:Card number}</label><input type="text" name="card_number" class="form-control" placeholder="0000 0000 0000 0000" /></div>
+							<div class="col-md-6"><label class="form-label">${22:Name on card}</label><input type="text" name="card_name" class="form-control" /></div>
+							<div class="col-md-3"><label class="form-label">${23:Expiry}</label><input type="text" name="card_exp" class="form-control" placeholder="MM/YY" /></div>
+							<div class="col-md-3"><label class="form-label">${24:CVV}</label><input type="text" name="card_cvv" class="form-control" placeholder="123" /></div>
+						</div>
+					</div></div>
+					<button type="submit" class="btn btn-primary btn-lg w-100">${25:Place order}</button>
+				</form>
+			</div>
+			<div class="col-lg-4">
+				<div class="card border-0 shadow-sm sticky-top" style="top: 1rem;"><div class="card-body p-4">
+					<h5 class="fw-bold mb-3">${26:Your order}</h5>
+					<ul class="list-group list-group-flush mb-3">
+						<li class="list-group-item d-flex justify-content-between px-0">
+							<div class="d-flex"><img src="${27:https://via.placeholder.com/48}" width="48" height="48" alt="" class="rounded-3 me-2" /><div><div class="small fw-semibold">${28:Product A}</div><div class="small text-body-secondary">${29:Qty: 1}</div></div></div>
+							<span class="fw-semibold">$${30:39.99}</span>
+						</li>
+						<li class="list-group-item d-flex justify-content-between px-0">
+							<div class="d-flex"><img src="${31:https://via.placeholder.com/48}" width="48" height="48" alt="" class="rounded-3 me-2" /><div><div class="small fw-semibold">${32:Product B}</div><div class="small text-body-secondary">${33:Qty: 2}</div></div></div>
+							<span class="fw-semibold">$${34:48.50}</span>
+						</li>
+					</ul>
+					<div class="d-flex justify-content-between mb-1 small text-body-secondary"><span>${35:Subtotal}</span><span>$${36:88.49}</span></div>
+					<div class="d-flex justify-content-between mb-1 small text-body-secondary"><span>${37:Shipping}</span><span>$${38:5.00}</span></div>
+					<div class="d-flex justify-content-between mb-2 small text-body-secondary"><span>${39:Tax}</span><span>$${40:8.85}</span></div>
+					<hr />
+					<div class="d-flex justify-content-between fw-bold fs-5"><span>${41:Total}</span><span>$${42:102.34}</span></div>
+				</div></div>
+			</div>
+		</div>
+	</div>
+</section>

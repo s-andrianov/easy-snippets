@@ -1,32 +1,35 @@
 <!doctype html>
-<html lang="en" data-bs-theme="${1|light,dark|}">
+<html lang="${1|en,ru,es,de,fr|}" data-bs-theme="${2|light,dark,auto|}">
 	<head>
-		<title>${2:Title}</title>
-		<!-- Required meta tags -->
+		<title>${3:Title}</title>
 		<meta charset="utf-8" />
 		<meta name="viewport" content="width=device-width, initial-scale=1" />
+		<meta name="description" content="${4:Page description}" />
 
 		<!-- Bootstrap CSS v5.3.8 -->
 		<link
-			href="${3:https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css}"
+			href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css"
 			rel="stylesheet"
-			integrity="${4:sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB}"
+			integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB"
 			crossorigin="anonymous"
 		/>
+		<!-- Bootstrap Icons -->
+		<link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css" rel="stylesheet" />
 	</head>
 
 	<body>
 		<header>
 			<!-- place navbar here -->
 		</header>
-		<main></main>
+		<main>$5</main>
 		<footer>
 			<!-- place footer here -->
 		</footer>
+
 		<!-- Bootstrap JavaScript Bundle (includes Popper) -->
 		<script
-			src="${5:https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js}"
-			integrity="${6:sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI}"
+			src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"
+			integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI"
 			crossorigin="anonymous"
 		></script>
 	</body>

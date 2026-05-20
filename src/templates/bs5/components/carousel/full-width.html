@@ -1,0 +1,32 @@
+<div id="${1:fullCarousel}" class="carousel slide" data-bs-ride="carousel">
+	<div class="carousel-indicators">
+		<button type="button" data-bs-target="#${1:fullCarousel}" data-bs-slide-to="0" class="active"></button>
+		<button type="button" data-bs-target="#${1:fullCarousel}" data-bs-slide-to="1"></button>
+		<button type="button" data-bs-target="#${1:fullCarousel}" data-bs-slide-to="2"></button>
+	</div>
+	<div class="carousel-inner">
+		<div class="carousel-item active ratio ratio-21x9">
+			<img src="${2:https://via.placeholder.com/1920x820}" class="w-100 h-100 object-fit-cover" alt="${3:Slide 1}" />
+			<div class="carousel-caption">
+				<h5 class="fw-bold">${4:First slide}</h5>
+				<p class="d-none d-md-block">${5:Slide caption goes here.}</p>
+			</div>
+		</div>
+		<div class="carousel-item ratio ratio-21x9">
+			<img src="${6:https://via.placeholder.com/1920x820}" class="w-100 h-100 object-fit-cover" alt="${7:Slide 2}" />
+			<div class="carousel-caption">
+				<h5 class="fw-bold">${8:Second slide}</h5>
+				<p class="d-none d-md-block">${9:Slide caption goes here.}</p>
+			</div>
+		</div>
+		<div class="carousel-item ratio ratio-21x9">
+			<img src="${10:https://via.placeholder.com/1920x820}" class="w-100 h-100 object-fit-cover" alt="${11:Slide 3}" />
+			<div class="carousel-caption">
+				<h5 class="fw-bold">${12:Third slide}</h5>
+				<p class="d-none d-md-block">${13:Slide caption goes here.}</p>
+			</div>
+		</div>
+	</div>
+	<button class="carousel-control-prev" type="button" data-bs-target="#${1:fullCarousel}" data-bs-slide="prev"><span class="carousel-control-prev-icon"></span></button>
+	<button class="carousel-control-next" type="button" data-bs-target="#${1:fullCarousel}" data-bs-slide="next"><span class="carousel-control-next-icon"></span></button>
+</div>

@@ -1,0 +1,18 @@
+<?php
+// 1-to-many (parent owns children)
+\$user = R::load('user', \$userId);
+\$post = R::dispense('post');
+\$post->title = '${1:Title}';
+\$post->user = \$user; // foreign key auto-created
+R::store(\$post);
+
+// Read children
+\$posts = \$user->ownPostList;
+
+// Many-to-many (shared lists)
+\$post->sharedTagList[] = R::dispense('tag')->setAttr('name', '${2:php}');
+R::store(\$post);
+
+// Read tags of post
+\$tags = \$post->sharedTagList;
+$0

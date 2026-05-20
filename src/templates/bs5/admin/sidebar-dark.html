@@ -1,0 +1,57 @@
+<aside class="d-flex flex-column flex-shrink-0 bg-dark text-white" style="width: 260px; min-height: 100vh;">
+	<a href="${1:#}" class="d-flex align-items-center p-3 text-white text-decoration-none border-bottom border-secondary">
+		<i class="bi bi-stack fs-4 me-2"></i>
+		<span class="fs-5 fw-bold">${2:Admin}</span>
+	</a>
+	<ul class="nav nav-pills flex-column mb-auto p-2">
+		<li class="nav-item">
+			<a href="${3:#}" class="nav-link active d-flex align-items-center">
+				<i class="bi bi-speedometer2 me-2"></i>${4:Dashboard}
+			</a>
+		</li>
+		<li>
+			<a href="${5:#}" class="nav-link text-white d-flex align-items-center">
+				<i class="bi bi-file-earmark-text me-2"></i>${6:Pages}
+			</a>
+		</li>
+		<li>
+			<a href="${7:#}" class="nav-link text-white d-flex align-items-center">
+				<i class="bi bi-collection me-2"></i>${8:Projects}
+			</a>
+		</li>
+		<li>
+			<a href="${9:#}" class="nav-link text-white d-flex align-items-center">
+				<i class="bi bi-people me-2"></i>${10:Users}
+				<span class="badge text-bg-warning ms-auto">${11:3}</span>
+			</a>
+		</li>
+		<li>
+			<a href="${12:#}" class="nav-link text-white d-flex align-items-center">
+				<i class="bi bi-bar-chart me-2"></i>${13:Reports}
+			</a>
+		</li>
+		<li class="my-2"><hr class="dropdown-divider bg-secondary" /></li>
+		<li>
+			<a href="${14:#}" class="nav-link text-white d-flex align-items-center">
+				<i class="bi bi-gear me-2"></i>${15:Settings}
+			</a>
+		</li>
+		<li>
+			<a href="${16:#}" class="nav-link text-white d-flex align-items-center">
+				<i class="bi bi-question-circle me-2"></i>${17:Help}
+			</a>
+		</li>
+	</ul>
+	<div class="dropdown border-top border-secondary p-2">
+		<a href="#" class="d-flex align-items-center text-white text-decoration-none dropdown-toggle p-2 rounded" data-bs-toggle="dropdown">
+			<img src="${18:https://via.placeholder.com/32}" alt="" width="32" height="32" class="rounded-circle me-2" />
+			<strong class="small">${19:User Name}</strong>
+		</a>
+		<ul class="dropdown-menu dropdown-menu-dark shadow">
+			<li><a class="dropdown-item" href="${20:#}">${21:Profile}</a></li>
+			<li><a class="dropdown-item" href="${22:#}">${23:Settings}</a></li>
+			<li><hr class="dropdown-divider" /></li>
+			<li><a class="dropdown-item" href="${24:#}">${25:Sign out}</a></li>
+		</ul>
+	</div>
+</aside>

@@ -1,0 +1,54 @@
+<section class="min-vh-100 d-flex align-items-center py-5 bg-body-tertiary">
+	<div class="container">
+		<div class="row justify-content-center">
+			<div class="col-12 col-sm-10 col-md-8 col-lg-6 col-xl-5">
+				<div class="card border-0 shadow-sm">
+					<div class="card-body p-4 p-md-5">
+						<div class="text-center mb-4">
+							<h1 class="h3 fw-bold mb-1">${1:Create account}</h1>
+							<p class="text-body-secondary mb-0">${2:It only takes a minute}</p>
+						</div>
+						<form class="needs-validation" novalidate>
+							<div class="row g-3 mb-3">
+								<div class="col-sm-6">
+									<div class="form-floating">
+										<input type="text" class="form-control" id="firstName" placeholder="First name" required />
+										<label for="firstName">${3:First name}</label>
+									</div>
+								</div>
+								<div class="col-sm-6">
+									<div class="form-floating">
+										<input type="text" class="form-control" id="lastName" placeholder="Last name" required />
+										<label for="lastName">${4:Last name}</label>
+									</div>
+								</div>
+							</div>
+							<div class="form-floating mb-3">
+								<input type="email" class="form-control" id="regEmail" placeholder="name@example.com" required />
+								<label for="regEmail">${5:Email address}</label>
+							</div>
+							<div class="form-floating mb-3">
+								<input type="password" class="form-control" id="regPassword" placeholder="Password" minlength="8" required />
+								<label for="regPassword">${6:Password}</label>
+							</div>
+							<div class="form-floating mb-3">
+								<input type="password" class="form-control" id="regPasswordConfirm" placeholder="Confirm" required />
+								<label for="regPasswordConfirm">${7:Confirm password}</label>
+							</div>
+							<div class="form-check mb-3">
+								<input class="form-check-input" type="checkbox" id="acceptTerms" required />
+								<label class="form-check-label small" for="acceptTerms">
+									${8:I agree to the} <a href="${9:#}" class="text-decoration-none">${10:Terms of Service}</a> ${11:and} <a href="${12:#}" class="text-decoration-none">${13:Privacy Policy}</a>
+								</label>
+							</div>
+							<button type="submit" class="btn btn-primary w-100 py-2 mb-3">${14:Create account}</button>
+							<p class="text-center small text-body-secondary mb-0">
+								${15:Already have an account?} <a href="${16:#}" class="text-decoration-none">${17:Sign in}</a>
+							</p>
+						</form>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</section>

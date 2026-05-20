@@ -1,0 +1,23 @@
+<div class="card border-0 shadow-sm h-100">
+	<div class="card-header bg-body d-flex justify-content-between align-items-center">
+		<div>
+			<h5 class="mb-0 fw-bold">${1:Sales overview}</h5>
+			<small class="text-body-secondary">${2:Last 30 days}</small>
+		</div>
+		<div class="btn-group btn-group-sm" role="group">
+			<input type="radio" class="btn-check" name="chartRange" id="cr7" checked />
+			<label class="btn btn-outline-secondary" for="cr7">${3:7d}</label>
+			<input type="radio" class="btn-check" name="chartRange" id="cr30" />
+			<label class="btn btn-outline-secondary" for="cr30">${4:30d}</label>
+			<input type="radio" class="btn-check" name="chartRange" id="cr90" />
+			<label class="btn btn-outline-secondary" for="cr90">${5:90d}</label>
+		</div>
+	</div>
+	<div class="card-body">
+		<canvas id="${6:salesChart}" height="280"></canvas>
+	</div>
+</div>
+<!-- Chart.js example (CDN): <script src="https://cdn.jsdelivr.net/npm/chart.js"></script> -->
+<script>
+	// new Chart(document.getElementById("${6:salesChart}"), { type: "line", data: { labels: [], datasets: [] } });
+</script>

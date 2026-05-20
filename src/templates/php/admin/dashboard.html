@@ -1,0 +1,53 @@
+<?php
+declare(strict_types=1);
+
+require_once __DIR__ . '/../bootstrap.php';
+\$current_user = require_auth();
+
+use RedBeanPHP\\R;
+
+\$page_title = '${1:Dashboard}';
+\$active     = 'dashboard';
+
+\$users_count  = R::count('user');
+\$posts_count  = R::count('post');
+\$orders_count = R::count('order');
+
+ob_start();
+?>
+<div class="row g-3 mb-4">
+	<div class="col-12 col-sm-6 col-xl-3">
+		<div class="card border-0 shadow-sm h-100"><div class="card-body">
+			<div class="text-body-secondary small text-uppercase fw-semibold mb-2">Users</div>
+			<div class="h3 fw-bold mb-0"><?= number_format(\$users_count) ?></div>
+		</div></div>
+	</div>
+	<div class="col-12 col-sm-6 col-xl-3">
+		<div class="card border-0 shadow-sm h-100"><div class="card-body">
+			<div class="text-body-secondary small text-uppercase fw-semibold mb-2">Posts</div>
+			<div class="h3 fw-bold mb-0"><?= number_format(\$posts_count) ?></div>
+		</div></div>
+	</div>
+	<div class="col-12 col-sm-6 col-xl-3">
+		<div class="card border-0 shadow-sm h-100"><div class="card-body">
+			<div class="text-body-secondary small text-uppercase fw-semibold mb-2">Orders</div>
+			<div class="h3 fw-bold mb-0"><?= number_format(\$orders_count) ?></div>
+		</div></div>
+	</div>
+	<div class="col-12 col-sm-6 col-xl-3">
+		<div class="card border-0 shadow-sm h-100"><div class="card-body">
+			<div class="text-body-secondary small text-uppercase fw-semibold mb-2">Today</div>
+			<div class="h3 fw-bold mb-0"><?= date('M j') ?></div>
+		</div></div>
+	</div>
+</div>
+
+<div class="card border-0 shadow-sm">
+	<div class="card-body">
+		<h5 class="fw-bold">Welcome back, <?= e(\$current_user->name ?? \$current_user->email) ?>!</h5>
+		<p class="text-body-secondary mb-0">${2:Use the navigation on the left to manage your data.}</p>
+	</div>
+</div>
+<?php
+\$content = ob_get_clean();
+include __DIR__ . '/layout.php';
