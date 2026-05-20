@@ -37,6 +37,7 @@
 	"categories": [
 		"Snippets"
 	],
+	"activationEvents": [],
 	"main": "./out/extension.js",
 	"contributes": {
 		"snippets": [
