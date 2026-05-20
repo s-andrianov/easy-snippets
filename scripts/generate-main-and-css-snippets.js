@@ -90,12 +90,9 @@ function createSnippetMap(files, prefixBuilder, scope = "") {
 		const prefix = prefixBuilder(rel);
 		let body = fs.readFileSync(file, "utf8");
 
-		// Для php-init-project убираем scope (чтобы работал везде как bs5)
-		const actualScope = prefix === "php-init-project" ? "" : scope;
-
 		snippets[prefix] = {
 			description: toTitleCaseFromSlug(prefix),
-			scope: actualScope,
+			scope,
 			prefix,
 			body: toSnippetBody(body),
 		};
